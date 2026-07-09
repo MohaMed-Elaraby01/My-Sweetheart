@@ -1,0 +1,452 @@
+body {
+    /* تدريج ألوان فخم: أزرق داكن برميوم من الأسفل ويفتح تدريجياً للأعلى */
+    background: linear-gradient(0deg, #1a2a40 0%, #2c3e55 40%, #4a617c 80%, #637d99 100%);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #e2ecf8;
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow-x: hidden;
+    position: relative;
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+    /* إزالة المربع الأزرق الشفاف عند الضغط على العناصر في الهواتف */
+    -webkit-tap-highlight-color: transparent; 
+}
+
+/* زر أعلى اليمين - حواف مربعة لتحديد واضح ومتناسق مع ألوان الموقع */
+.top-right-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px; /* حواف مربعة بسيطة */
+    color: #9ec9ff;
+    padding: 8px 14px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    z-index: 10;
+    backdrop-filter: blur(5px);
+    transition: all 0.2s ease;
+}
+
+.top-right-btn:hover {
+    background: rgba(158, 201, 255, 0.15);
+    border-color: #9ec9ff;
+    color: #ffffff;
+    box-shadow: 0 0 10px rgba(158, 201, 255, 0.3);
+}
+
+/* تأثير بريق النجوم العائمة */
+.floating-stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.star {
+    position: absolute;
+    bottom: -50px;
+    font-size: 18px;
+    opacity: 0;
+    color: #a3cdff;
+    text-shadow: 0 0 8px rgba(163, 205, 255, 0.8);
+    animation: floatAndFade 7s infinite linear;
+}
+
+.star:nth-child(1) { left: 12%; animation-delay: 0s; font-size: 22px; }
+.star:nth-child(2) { left: 35%; animation-delay: 1.5s; animation-duration: 9s; color: #ffffff; }
+.star:nth-child(3) { left: 58%; animation-delay: 3s; font-size: 26px; }
+.star:nth-child(4) { left: 78%; animation-delay: 0.5s; animation-duration: 8s; color: #bfe3fc; }
+.star:nth-child(5) { left: 92%; animation-delay: 4.5s; }
+
+@keyframes floatAndFade {
+    0% { transform: translateY(0) scale(0.6) rotate(0deg); opacity: 0; }
+    20% { opacity: 0.7; }
+    80% { opacity: 0.7; }
+    100% { transform: translateY(-105vh) scale(1.1) rotate(180deg); opacity: 0; }
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+/* تأثير نيوني لامع */
+.neon-title {
+    color: #9ec9ff;
+    font-size: 2.8rem;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-shadow: 0 0 6px rgba(158, 201, 255, 0.4),
+                 0 0 15px rgba(158, 201, 255, 0.6),
+                 0 0 25px rgba(158, 201, 255, 0.2);
+}
+
+.heart-pulse {
+    display: inline-block;
+    animation: heartBeat 1.8s infinite ease-in-out;
+}
+
+@keyframes heartBeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.12); }
+}
+
+header p {
+    color: #cbdcf2;
+    font-style: italic;
+    font-size: 1.05rem;
+    margin-top: 5px;
+    padding: 0 10px;
+}
+
+.kitty-gif {
+    width: 95px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    filter: drop-shadow(0px 4px 15px rgba(158, 201, 255, 0.3));
+}
+
+.folders-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    padding: 0 10px;
+}
+
+/* بطاقات المجلدات بتأثير زجاجي داكن */
+.folder-card {
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    padding: 25px 15px;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s, box-shadow 0.3s;
+}
+
+.folder-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: #9ec9ff;
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 12px 24px rgba(158, 201, 255, 0.2);
+}
+
+.folder-icon {
+    font-size: 40px;
+    margin-bottom: 12px;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3));
+    transition: transform 0.3s ease;
+}
+
+.folder-card:hover .folder-icon {
+    transform: scale(1.15);
+}
+
+.folder-card h3 {
+    margin: 0;
+    color: #e2ecf8;
+    font-size: 1.05rem;
+    font-weight: 600;
+}
+
+/* النافذة المنبثقة التفاعلية */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(10, 17, 28, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 15px;
+}
+
+/* تعديل المودال من الداخل ليصبح أسود ممتزج بالأزرق الغامق الفخم */
+.modal-content {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    padding: 25px;
+    border-radius: 24px;
+    border: 2px solid #334155;
+    width: 100%;
+    max-width: 480px;
+    max-height: 75vh;
+    overflow-y: auto;
+    position: relative;
+    text-align: right;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+    animation: fadeIn 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+.modal-content h2 {
+    color: #9ec9ff;
+    margin-top: 0;
+    font-size: 1.4rem;
+    border-bottom: 2px dashed #334155;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+}
+
+/* قائمة الروابط للمواقع الأخرى */
+.sites-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.site-link-item {
+    background: #1e293b;
+    padding: 14px;
+    border-radius: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #334155;
+    text-decoration: none;
+    color: #e2ecf8;
+    font-weight: 600;
+    font-size: 0.95rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.site-link-item:hover {
+    border-color: #ff9ebb;
+    background: #243147;
+    transform: translateX(-4px);
+    color: #ffffff;
+}
+
+.link-arrow {
+    font-size: 0.85rem;
+    transition: transform 0.2s ease;
+}
+
+.site-link-item:hover .link-arrow {
+    transform: translateX(-4px);
+}
+
+/* تعديل نصوص قصة "بحبك" لتناسب الخلفية الداكنة الجديدة للمودال */
+.modal-content div[style] {
+    color: #cbdcf2 !important;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95) translateY(15px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* تخصيص السكرول بار المودرن */
+.modal-content::-webkit-scrollbar { width: 6px; }
+.modal-content::-webkit-scrollbar-track { background: #1e293b; border-radius: 10px; }
+.modal-content::-webkit-scrollbar-thumb { background: #475569; border-radius: 10px; }
+.modal-content::-webkit-scrollbar-thumb:hover { background: #9ec9ff; }
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    font-size: 28px;
+    cursor: pointer;
+    color: #9ec9ff;
+    transition: transform 0.2s, color 0.2s;
+    z-index: 10;
+}
+
+.close-btn:hover {
+    transform: scale(1.2);
+    color: #ffffff;
+}
+
+.gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.gallery img {
+    width: 100%;
+    border-radius: 18px;
+    border: 2px solid #334155;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.gallery img:hover {
+    transform: scale(1.02);
+}
+
+/* مشغل الأغاني المتناسق مع الثيم الداكن للمودال */
+.audio-item {
+    background: #1e293b;
+    padding: 14px;
+    margin-bottom: 12px;
+    border-radius: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #334155;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.audio-item:hover {
+    border-color: #559bff;
+    background: #243147;
+    transform: translateX(-4px);
+}
+
+.audio-info p {
+    margin: 0;
+    font-weight: 600;
+    color: #e2ecf8;
+    font-size: 0.9rem;
+}
+
+.play-btn {
+    background-color: #38bdf8;
+    color: #0f172a;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: bold;
+    transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+    white-space: nowrap;
+}
+
+.play-btn:hover {
+    background-color: #7dd3fc;
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
+}
+
+.play-btn.playing {
+    background-color: #0284c7;
+    color: white;
+    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.4);
+}
+
+/* تصميم الفوتر */
+footer {
+    margin-top: 40px;
+    padding: 20px 0;
+    border-top: 1px dashed rgba(255, 255, 255, 0.15);
+}
+
+.footer-heart {
+    font-size: 1.4rem;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.18); }
+}
+
+.footer-text {
+    color: #cbdcf2;
+    font-size: 0.9rem;
+    margin: 10px 0;
+}
+
+.days-counter {
+    font-size: 0.85rem;
+    color: #9ec9ff;
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    display: inline-block;
+    padding: 8px 18px;
+    border-radius: 24px;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* 📱 إعدادات خاصة ومحسنة تلقائياً لشاشات الهواتف الذكية */
+@media (max-width: 600px) {
+    body {
+        padding: 15px;
+    }
+    .top-right-btn {
+        top: 10px;
+        right: 10px;
+        padding: 6px 10px;
+        font-size: 0.75rem;
+    }
+    .neon-title {
+        font-size: 2.1rem;
+        margin-top: 25px; /* مسافة بسيطة لتجنب التداخل مع الزر العلوي */
+    }
+    header p {
+        font-size: 0.95rem;
+    }
+    .kitty-gif {
+        width: 80px;
+    }
+    .folders-grid {
+        grid-template-columns: repeat(2, 1fr); /* عرض مجلدين في كل صف لتوفير المساحة */
+        gap: 15px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .folder-card {
+        padding: 20px 10px;
+        border-radius: 16px;
+    }
+    .folder-icon {
+        font-size: 35px;
+    }
+    .folder-card h3 {
+        font-size: 0.95rem;
+    }
+    .modal-content {
+        padding: 20px 15px;
+        max-height: 80vh;
+    }
+    .modal-content h2 {
+        font-size: 1.2rem;
+    }
+    .audio-item, .site-link-item {
+        padding: 12px 10px;
+    }
+    .audio-info p, .site-link-item span {
+        font-size: 0.85rem;
+    }
+    .play-btn {
+        padding: 6px 12px;
+        font-size: 0.75rem;
+    }
+}
+
