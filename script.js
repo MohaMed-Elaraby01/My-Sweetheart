@@ -152,7 +152,7 @@ document.addEventListener("DOMContentLoaded", function() {
     
     const counterElement = document.getElementById('counter');
     if (differenceInDays > 0) {
-        counterElement.innerText = `بقالنا سوا ${differenceInDays} وإن شاء الله هنبقى أكتر و أكتر.`;
+        counterElement.innerText = `بقالنا سوا ${differenceInDays}يوم وإن شاء الله هنبقى سوا أكتر و أكتر.`;
     } else {
         counterElement.innerText = `بداية حكايتنا الأجمل في الكون.`;
     }
